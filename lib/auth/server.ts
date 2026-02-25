@@ -9,12 +9,11 @@ import { ACCESS_COOKIE } from "@/lib/auth/session";
 import { getAdminSession } from "@/lib/admin-auth";
 
 export async function getServerSession() {
-  const rawAdminCookie = cookies().get("bond_admin_session")?.value;
   const adminSession = getAdminSession();
-  if (adminSession || rawAdminCookie) {
+  if (adminSession) {
     return {
       user: {
-        email: adminSession?.email ?? process.env.ADMIN_EMAIL?.trim() ?? "admin",
+        email: adminSession.email,
         phone: null
       },
       permissions: new Set(["*"])
