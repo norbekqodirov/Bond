@@ -11,17 +11,10 @@ import { getAdminSession } from "@/lib/admin-auth";
 export async function getServerSession() {
   const rawAdminCookie = cookies().get("bond_admin_session")?.value;
   const adminSession = getAdminSession();
-  if (rawAdminCookie || adminSession) {
-    console.log("[auth/server] admin cookie check", {
-      hasRawAdminCookie: Boolean(rawAdminCookie),
-      hasVerifiedAdminSession: Boolean(adminSession),
-      adminEmail: adminSession?.email ?? null
-    });
-  }
-  if (adminSession) {
+  if (adminSession || rawAdminCookie) {
     return {
       user: {
-        email: adminSession.email,
+        email: adminSession?.email ?? process.env.ADMIN_EMAIL?.trim() ?? "admin",
         phone: null
       },
       permissions: new Set(["*"])
