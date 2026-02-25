@@ -16,7 +16,7 @@ function getSecret() {
   if (!secret) {
     throw new Error("ADMIN_SESSION_SECRET is not set.");
   }
-  return secret;
+  return secret.trim();
 }
 
 function base64UrlEncode(value: string) {
@@ -73,12 +73,12 @@ export function verifySessionToken(token: string) {
 }
 
 export function validateAdminCredentials(email: string, password: string) {
-  const expectedEmail = process.env.ADMIN_EMAIL || "";
-  const expectedPassword = process.env.ADMIN_PASSWORD || "";
+  const expectedEmail = (process.env.ADMIN_EMAIL || "").trim();
+  const expectedPassword = (process.env.ADMIN_PASSWORD || "").trim();
   if (!expectedEmail || !expectedPassword) {
     return false;
   }
-  const emailMatch = safeEqual(email, expectedEmail);
+  const emailMatch = safeEqual(email.trim(), expectedEmail);
   const passwordMatch = safeEqual(password, expectedPassword);
   return emailMatch && passwordMatch;
 }
