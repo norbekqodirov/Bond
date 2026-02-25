@@ -9,7 +9,15 @@ import { ACCESS_COOKIE } from "@/lib/auth/session";
 import { getAdminSession } from "@/lib/admin-auth";
 
 export async function getServerSession() {
+  const rawAdminCookie = cookies().get("bond_admin_session")?.value;
   const adminSession = getAdminSession();
+  if (rawAdminCookie || adminSession) {
+    console.log("[auth/server] admin cookie check", {
+      hasRawAdminCookie: Boolean(rawAdminCookie),
+      hasVerifiedAdminSession: Boolean(adminSession),
+      adminEmail: adminSession?.email ?? null
+    });
+  }
   if (adminSession) {
     return {
       user: {
