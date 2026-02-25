@@ -11,6 +11,8 @@ const intlMiddleware = createMiddleware({
 
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const isLocalizedAdmin = /^\/(uz|ru|en)\/admin(\/|$)/.test(pathname);
+  const isLocalizedOrganizer = /^\/(uz|ru|en)\/organizer(\/|$)/.test(pathname);
 
   if (pathname.startsWith("/admin")) {
     const url = request.nextUrl.clone();
@@ -22,6 +24,11 @@ export default function middleware(request: NextRequest) {
     const url = request.nextUrl.clone();
     url.pathname = `/${defaultLocale}${pathname}`;
     return NextResponse.redirect(url);
+  }
+
+  // Admin/organizer locale routes rely on auth cookies; avoid middleware rewrites here.
+  if (isLocalizedAdmin || isLocalizedOrganizer) {
+    return NextResponse.next();
   }
 
   return intlMiddleware(request);
