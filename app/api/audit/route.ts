@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireApiSession } from "@/lib/api-session";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(request: NextRequest) {
   const { response } = await requireApiSession(request, "audit.view");
   if (response) {
