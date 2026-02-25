@@ -6,8 +6,20 @@ import { prisma } from "@/lib/prisma";
 import { collectPermissions } from "@/lib/rbac";
 import { verifyAccessToken } from "@/lib/auth/tokens";
 import { ACCESS_COOKIE } from "@/lib/auth/session";
+import { getAdminSession } from "@/lib/admin-auth";
 
 export async function getServerSession() {
+  const adminSession = getAdminSession();
+  if (adminSession) {
+    return {
+      user: {
+        email: adminSession.email,
+        phone: null
+      },
+      permissions: new Set(["*"])
+    };
+  }
+
   const accessToken = cookies().get(ACCESS_COOKIE)?.value;
   if (!accessToken) {
     return null;
@@ -54,7 +66,7 @@ export async function requireUser() {
 
 export async function requirePermission(permission: string) {
   const session = await requireUser();
-  if (!session.permissions.has(permission)) {
+  if (!session.permissions.has("*") && !session.permissions.has(permission)) {
     const locale = await getLocale();
     redirect(`/${locale}/admin/unauthorized`);
   }
