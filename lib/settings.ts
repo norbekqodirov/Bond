@@ -109,9 +109,14 @@ export const defaultSettings: {
 
 export async function getSiteSettings() {
   const keys = ["about", "hero", "contact", "footer"];
-  const records = await prisma.siteSetting.findMany({
-    where: { key: { in: keys } }
-  });
+  let records: Awaited<ReturnType<typeof prisma.siteSetting.findMany>> = [];
+  try {
+    records = await prisma.siteSetting.findMany({
+      where: { key: { in: keys } }
+    });
+  } catch (error) {
+    console.error("Failed to load site settings. Falling back to defaults.", error);
+  }
 
   const map = new Map(records.map((record) => [record.key, record.value]));
   const rawContact =

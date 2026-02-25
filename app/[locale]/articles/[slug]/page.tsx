@@ -11,10 +11,16 @@ export async function generateMetadata({
 }: {
   params: { locale: Locale; slug: string };
 }) {
-  const article = await prisma.article.findUnique({
-    where: { slug: params.slug },
-    include: { translations: true }
-  });
+  let article: Awaited<ReturnType<typeof prisma.article.findUnique>> = null;
+  try {
+    article = await prisma.article.findUnique({
+      where: { slug: params.slug },
+      include: { translations: true }
+    });
+  } catch (error) {
+    console.error("Failed to load article metadata.", error);
+    return {};
+  }
 
   if (!article || article.status !== "PUBLISHED") {
     return {};
@@ -43,10 +49,16 @@ export default async function ArticleDetailPage({
   const locale = params.locale;
   const t = await getTranslations("articles");
   const settings = await getSiteSettings();
-  const article = await prisma.article.findUnique({
-    where: { slug: params.slug },
-    include: { translations: true }
-  });
+  let article: Awaited<ReturnType<typeof prisma.article.findUnique>> = null;
+  try {
+    article = await prisma.article.findUnique({
+      where: { slug: params.slug },
+      include: { translations: true }
+    });
+  } catch (error) {
+    console.error("Failed to load article detail.", error);
+    notFound();
+  }
 
   if (!article || article.status !== "PUBLISHED") {
     notFound();

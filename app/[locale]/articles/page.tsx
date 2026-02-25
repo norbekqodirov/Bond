@@ -14,11 +14,16 @@ export default async function ArticlesPage({
   const locale = params.locale;
   const t = await getTranslations("articles");
   const settings = await getSiteSettings();
-  const articles = await prisma.article.findMany({
-    where: { status: "PUBLISHED" },
-    include: { translations: true },
-    orderBy: { createdAt: "desc" }
-  });
+  let articles: Awaited<ReturnType<typeof prisma.article.findMany>> = [];
+  try {
+    articles = await prisma.article.findMany({
+      where: { status: "PUBLISHED" },
+      include: { translations: true },
+      orderBy: { createdAt: "desc" }
+    });
+  } catch (error) {
+    console.error("Failed to load articles list. Rendering empty state.", error);
+  }
 
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     day: "2-digit",

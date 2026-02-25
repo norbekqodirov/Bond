@@ -79,25 +79,33 @@ export default async function HomePage({
     format: format && formats.includes(format as Format) ? (format as Format) : undefined
   };
 
-  const [settings, olympiads, events, articles] = await Promise.all([
-    getSiteSettings(),
-    prisma.olympiad.findMany({
-      where: { status: "PUBLISHED" },
-      include: { translations: true },
-      orderBy: { createdAt: "desc" }
-    }),
-    prisma.event.findMany({
-      where: { status: "PUBLISHED" },
-      include: { translations: true },
-      orderBy: { createdAt: "desc" }
-    }),
-    prisma.article.findMany({
-      where: { status: "PUBLISHED" },
-      include: { translations: true },
-      orderBy: { createdAt: "desc" },
-      take: 3
-    })
-  ]);
+  const settings = await getSiteSettings();
+  let olympiads: Awaited<ReturnType<typeof prisma.olympiad.findMany>> = [];
+  let events: Awaited<ReturnType<typeof prisma.event.findMany>> = [];
+  let articles: Awaited<ReturnType<typeof prisma.article.findMany>> = [];
+
+  try {
+    [olympiads, events, articles] = await Promise.all([
+      prisma.olympiad.findMany({
+        where: { status: "PUBLISHED" },
+        include: { translations: true },
+        orderBy: { createdAt: "desc" }
+      }),
+      prisma.event.findMany({
+        where: { status: "PUBLISHED" },
+        include: { translations: true },
+        orderBy: { createdAt: "desc" }
+      }),
+      prisma.article.findMany({
+        where: { status: "PUBLISHED" },
+        include: { translations: true },
+        orderBy: { createdAt: "desc" },
+        take: 3
+      })
+    ]);
+  } catch (error) {
+    console.error("Failed to load homepage data. Rendering with fallback content.", error);
+  }
 
   const olympiadRows = olympiads.map((olympiad) => {
     const titles = mapTranslations(olympiad.translations as TranslationRecord[], "title");

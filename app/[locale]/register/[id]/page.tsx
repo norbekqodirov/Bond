@@ -17,10 +17,15 @@ export default async function EventRegistrationPage({
   const t = await getTranslations({ locale, namespace: "registration" });
   const enumT = await getTranslations({ locale, namespace: "enum" });
 
-  const event = await prisma.event.findUnique({
-    where: { id },
-    include: { translations: true }
-  });
+  let event: Awaited<ReturnType<typeof prisma.event.findUnique>> = null;
+  try {
+    event = await prisma.event.findUnique({
+      where: { id },
+      include: { translations: true }
+    });
+  } catch (error) {
+    console.error("Failed to load event registration page data.", error);
+  }
 
   if (event) {
     const title = localizeField(event, "title", locale) ?? "Event";
@@ -128,10 +133,15 @@ export default async function EventRegistrationPage({
     );
   }
 
-  const olympiad = await prisma.olympiad.findUnique({
-    where: { id },
-    include: { translations: true }
-  });
+  let olympiad: Awaited<ReturnType<typeof prisma.olympiad.findUnique>> = null;
+  try {
+    olympiad = await prisma.olympiad.findUnique({
+      where: { id },
+      include: { translations: true }
+    });
+  } catch (error) {
+    console.error("Failed to load olympiad registration page data.", error);
+  }
 
   if (!olympiad) {
     notFound();
