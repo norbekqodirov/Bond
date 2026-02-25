@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Admin</title>
+  </head>
+  <body>
+    <h2>Dashboard</h2>
+    <ul>
+      <li>Users: {{ counts.users }}</li>
+      <li>Registrations: {{ counts.registrations }}</li>
+      <li>Olympiads: {{ counts.olympiads }}</li>
+    </ul>
+    <nav>
+      <a href="/admin/olympiads">Olympiads</a> |
+      <a href="/admin/users/export">Export Users</a> |
+      <a href="/admin/about">About Page</a>
+    </nav>
+  </body>
+</html>
+

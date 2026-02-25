@@ -1,0 +1,584 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Locale {
+  UZ
+  RU
+  EN
+}
+
+enum Subject {
+  ENGLISH
+  MATH
+  IT
+  MENTAL
+}
+
+enum GradeGroup {
+  G1_4
+  G5_7
+  G8_9
+  G10_11
+}
+
+enum OlympiadFormat {
+  ONLINE
+  OFFLINE
+  STAGED
+}
+
+enum OlympiadLevel {
+  A2
+  B1
+  B2
+  C1
+}
+
+enum EventType {
+  OLYMPIAD
+  CONTEST
+  CAMP
+  TRAVEL
+}
+
+enum EventStatus {
+  DRAFT
+  PENDING
+  PUBLISHED
+  ARCHIVED
+}
+
+enum RegistrationStatus {
+  NEW
+  REGISTERED
+  PAID
+  CONFIRMED
+  ATTENDED
+  RESULTS_READY
+  REJECTED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  UNPAID
+  PAID
+  REFUNDED
+}
+
+enum PaymentProvider {
+  CLICK
+  PAYME
+  MANUAL
+}
+
+enum TransactionStatus {
+  PENDING
+  PAID
+  REFUNDED
+  FAILED
+}
+
+enum ExamSessionStatus {
+  DRAFT
+  ACTIVE
+  CLOSED
+}
+
+enum QuestionType {
+  MCQ
+  SHORT
+  ESSAY
+}
+
+enum SubmissionStatus {
+  SUBMITTED
+  REVIEWED
+}
+
+enum ResultStatus {
+  PENDING
+  PUBLISHED
+  REVOKED
+}
+
+enum OrganizationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum OrganizationRole {
+  OWNER
+  ADMIN
+  JURY
+}
+
+enum ArticleStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model User {
+  id           String           @id @default(cuid())
+  email        String?          @unique
+  phone        String?          @unique
+  firstName    String?
+  lastName     String?
+  telegramId   String?          @unique
+  telegramUsername String?
+  telegramFirstName String?
+  telegramLastName String?
+  telegramPhotoUrl String?
+  telegramAuthAt DateTime?
+  passwordHash String?
+  isActive     Boolean          @default(true)
+  preferredLanguage Locale?
+  activeStudentProfileId String?
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  roles        UserRole[]
+  refreshTokens RefreshToken[]
+  otpTokens    OtpToken[]
+  auditLogs    AuditLog[]
+  organizationMembers OrganizationMember[]
+  studentProfile StudentProfile?
+  guardianStudents StudentProfile[] @relation("GuardianStudents")
+  activeStudentProfile StudentProfile? @relation("ActiveStudentProfile", fields: [activeStudentProfileId], references: [id], onDelete: SetNull)
+  organizerProfiles Organizer[]
+  notifications Notification[]
+  mediaAssets  MediaAsset[]
+  registrations Registration[]
+}
+
+model StudentProfile {
+  id          String   @id @default(cuid())
+  userId      String?  @unique
+  guardianId  String?
+  fullName    String
+  dateOfBirth DateTime?
+  grade       String?
+  school      String?
+  region      String?
+  language    Locale?
+  parentPhone String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  guardian    User?    @relation("GuardianStudents", fields: [guardianId], references: [id], onDelete: SetNull)
+  activeForUsers User[] @relation("ActiveStudentProfile")
+  registrations Registration[]
+  submissions Submission[]
+
+  @@index([guardianId])
+}
+
+model Role {
+  id          String           @id @default(cuid())
+  name        String           @unique
+  description String?
+  isSystem    Boolean          @default(false)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  permissions RolePermission[]
+  users       UserRole[]
+}
+
+model Permission {
+  id          String           @id @default(cuid())
+  key         String           @unique
+  description String?
+  module      String
+  createdAt   DateTime         @default(now())
+  roles       RolePermission[]
+}
+
+model RolePermission {
+  roleId       String
+  permissionId String
+  role         Role        @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission   Permission  @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+  createdAt    DateTime    @default(now())
+
+  @@id([roleId, permissionId])
+}
+
+model UserRole {
+  userId    String
+  roleId    String
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role      Role   @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@id([userId, roleId])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Restrict)
+  action     String
+  entityType String
+  entityId   String?
+  metadata   Json?
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
+  @@index([entityType])
+}
+
+model Organization {
+  id         String              @id @default(cuid())
+  name       String
+  status     OrganizationStatus  @default(PENDING)
+  contacts   Json?
+  createdAt  DateTime            @default(now())
+  updatedAt  DateTime            @updatedAt
+  members    OrganizationMember[]
+  events     Event[]
+  organizerProfile Organizer?
+}
+
+model OrganizationMember {
+  orgId     String
+  userId    String
+  orgRole   OrganizationRole
+  createdAt DateTime @default(now())
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([orgId, userId])
+  @@index([userId])
+}
+
+model Organizer {
+  id             String             @id @default(cuid())
+  organizationId String             @unique
+  ownerUserId    String
+  legalName      String
+  status         OrganizationStatus @default(PENDING)
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+  organization   Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  owner          User               @relation(fields: [ownerUserId], references: [id], onDelete: Cascade)
+  olympiads      Olympiad[]
+
+  @@index([ownerUserId])
+}
+
+model Olympiad {
+  id            String         @id @default(cuid())
+  organizerId   String
+  organizer     Organizer      @relation(fields: [organizerId], references: [id], onDelete: Cascade)
+  type          EventType
+  status        EventStatus    @default(DRAFT)
+  subject       Subject
+  gradeGroup    GradeGroup
+  level         OlympiadLevel?
+  format        OlympiadFormat
+  region        String?
+  language      Locale?
+  startDate     DateTime?
+  endDate       DateTime?
+  location      String?
+  price         Decimal?       @db.Decimal(10, 2)
+  currency      String?
+  capacity      Int?
+  coverImageUrl String?
+  rules         String?
+  prizes        String?
+  certificateUrl String?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  translations  OlympiadTranslation[]
+  registrations Registration[]
+  examSessions  ExamSession[]
+
+  @@index([organizerId])
+  @@index([status])
+}
+
+model OlympiadTranslation {
+  id             String   @id @default(cuid())
+  olympiadId     String
+  locale         Locale
+  title          String
+  subtitle       String?
+  description    String?
+  rules          String?
+  prizes         String?
+  seoTitle       String?
+  seoDescription String?
+  olympiad       Olympiad @relation(fields: [olympiadId], references: [id], onDelete: Cascade)
+
+  @@unique([olympiadId, locale])
+}
+
+model Event {
+  id             String         @id @default(cuid())
+  type           EventType
+  status         EventStatus    @default(DRAFT)
+  subjects       Subject[]
+  organizerOrgId String?
+  organizerOrg   Organization?  @relation(fields: [organizerOrgId], references: [id], onDelete: SetNull)
+  startDate      DateTime?
+  endDate        DateTime?
+  city           String?
+  address        String?
+  mapUrl         String?
+  price          Decimal?       @db.Decimal(10, 2)
+  currency       String?
+  capacity       Int?
+  coverImageUrl  String?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  translations   EventTranslation[]
+  registrations  Registration[]
+
+  @@index([organizerOrgId])
+}
+
+model EventTranslation {
+  id             String   @id @default(cuid())
+  eventId        String
+  locale         Locale
+  title          String
+  subtitle       String?
+  description    String?
+  rules          String?
+  prizes         String?
+  levelInfo      String?
+  seoTitle       String?
+  seoDescription String?
+  event          Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([eventId, locale])
+}
+
+model Registration {
+  id              String             @id @default(cuid())
+  eventId         String?
+  olympiadId      String?
+  studentProfileId String?
+  userId          String?
+  event           Event?             @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  olympiad        Olympiad?          @relation(fields: [olympiadId], references: [id], onDelete: Cascade)
+  studentProfile  StudentProfile?    @relation(fields: [studentProfileId], references: [id], onDelete: SetNull)
+  user            User?              @relation(fields: [userId], references: [id], onDelete: SetNull)
+  participantName String
+  phone           String
+  subject         String?
+  formData        Json?
+  status          RegistrationStatus @default(NEW)
+  paymentStatus   PaymentStatus      @default(UNPAID)
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+  payments        Payment[]
+  result          Result?
+  certificate     Certificate?
+  submissions     Submission[]
+
+  @@index([eventId])
+  @@index([olympiadId])
+  @@index([studentProfileId])
+  @@index([userId])
+}
+
+model Payment {
+  id             String            @id @default(cuid())
+  registrationId String
+  registration   Registration      @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+  provider       PaymentProvider
+  amount         Decimal           @db.Decimal(10, 2)
+  currency       String
+  status         TransactionStatus
+  idempotencyKey String?
+  externalTxnId  String?
+  createdAt      DateTime          @default(now())
+
+  @@index([registrationId])
+  @@map("PaymentTransaction")
+}
+
+model Result {
+  id             String   @id @default(cuid())
+  registrationId String   @unique
+  registration   Registration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+  score          Int?
+  place          Int?
+  rank           Int?
+  status         ResultStatus @default(PENDING)
+  details        Json?
+  publishedAt    DateTime?
+  createdAt      DateTime @default(now())
+  certificate    Certificate?
+}
+
+model Certificate {
+  id               String   @id @default(cuid())
+  registrationId   String   @unique
+  resultId         String?  @unique
+  url              String
+  verificationCode String
+  issuedAt         DateTime @default(now())
+  createdAt        DateTime @default(now())
+  registration     Registration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+  result           Result?  @relation(fields: [resultId], references: [id], onDelete: SetNull)
+}
+
+model ExamSession {
+  id         String            @id @default(cuid())
+  olympiadId String
+  olympiad   Olympiad          @relation(fields: [olympiadId], references: [id], onDelete: Cascade)
+  status     ExamSessionStatus @default(DRAFT)
+  startsAt   DateTime
+  endsAt     DateTime
+  location   String?
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
+  questions  Question[]
+  submissions Submission[]
+
+  @@index([olympiadId])
+}
+
+model Question {
+  id            String       @id @default(cuid())
+  examSessionId String
+  type          QuestionType
+  prompt        String
+  options       Json?
+  correctAnswer String?
+  explanation   String?
+  points        Int          @default(1)
+  createdAt     DateTime     @default(now())
+  examSession   ExamSession  @relation(fields: [examSessionId], references: [id], onDelete: Cascade)
+
+  @@index([examSessionId])
+}
+
+model Submission {
+  id            String           @id @default(cuid())
+  examSessionId String
+  registrationId String?
+  studentProfileId String?
+  answers       Json
+  score         Int?
+  status        SubmissionStatus @default(SUBMITTED)
+  submittedAt   DateTime         @default(now())
+  examSession   ExamSession      @relation(fields: [examSessionId], references: [id], onDelete: Cascade)
+  registration  Registration?    @relation(fields: [registrationId], references: [id], onDelete: SetNull)
+  studentProfile StudentProfile? @relation(fields: [studentProfileId], references: [id], onDelete: SetNull)
+
+  @@index([examSessionId])
+  @@index([registrationId])
+  @@index([studentProfileId])
+}
+
+model Article {
+  id            String         @id @default(cuid())
+  status        ArticleStatus  @default(DRAFT)
+  slug          String         @unique
+  coverImageUrl String?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  translations  ArticleTranslation[]
+}
+
+model ArticleTranslation {
+  id             String  @id @default(cuid())
+  articleId      String
+  locale         Locale
+  title          String
+  body           String
+  seoTitle       String?
+  seoDescription String?
+  article        Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@unique([articleId, locale])
+}
+
+model MediaAsset {
+  id         String   @id @default(cuid())
+  url        String
+  kind       String?
+  mimeType   String?
+  size       Int?
+  metadata   Json?
+  entityType String?
+  entityId   String?
+  ownerId    String?
+  owner      User?    @relation(fields: [ownerId], references: [id], onDelete: SetNull)
+  createdAt  DateTime @default(now())
+
+  @@index([ownerId])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String
+  title     String?
+  body      String?
+  data      Json?
+  readAt    DateTime?
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model SiteSetting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SiteBlock {
+  id        String   @id @default(cuid())
+  code      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  translations SiteBlockTranslation[]
+}
+
+model SiteBlockTranslation {
+  id        String   @id @default(cuid())
+  blockId   String
+  locale    Locale
+  data      Json
+  block     SiteBlock @relation(fields: [blockId], references: [id], onDelete: Cascade)
+
+  @@unique([blockId, locale])
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  userId    String
+  tokenHash String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  revokedAt DateTime?
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model OtpToken {
+  id        String   @id @default(cuid())
+  userId    String
+  codeHash  String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  usedAt    DateTime?
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}

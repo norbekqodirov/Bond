@@ -1,0 +1,15 @@
+[Unit]
+Description=Bond Olympiad Bot + Admin
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/bond
+EnvironmentFile=/opt/bond/.env
+ExecStart=/opt/bond/venv/bin/python -m app.main
+Restart=always
+User=bond
+Group=bond
+
+[Install]
+WantedBy=multi-user.target
+

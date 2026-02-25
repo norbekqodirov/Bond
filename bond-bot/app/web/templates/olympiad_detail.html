@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Olympiad {{ o.name }}</title>
+  </head>
+  <body>
+    <h2>{{ o.name }}</h2>
+    <div>
+      <div><b>Date</b>: {{ o.event_at }}</div>
+      <div><b>Address</b>: {{ o.address }}</div>
+      <div><b>Phone</b>: {{ o.contact_phone }}</div>
+      <div><b>Participation fee</b>: {{ o.fee or 0 }} so'm</div>
+      <div><b>Active</b>: {{ 'Yes' if o.is_active else 'No' }}</div>
+    </div>
+
+    <h4>Update Fee</h4>
+    <form method="post" action="/admin/olympiads/{{ o.id }}/fee">
+      <input type="number" name="fee" value="{{ o.fee or 0 }}" min="0">
+      <button type="submit">Save</button>
+    </form>
+    <form method="post" action="/admin/olympiads/{{ o.id }}/delete" onsubmit="return confirm('Delete?');">
+      <button type="submit" style="color:red;">Delete Olympiad</button>
+    </form>
+
+    <h3>Directions</h3>
+    <ul>
+      {% for d in dirs %}
+        <li>
+          #{{ d.id }} {{ d.name }} ({{ d.grouping }})
+          {% set groups = groups_map.get(d.id) %}
+          {% if groups %}
+            <div>Groups:
+              <ul>
+                {% for g in groups %}
+                  <li>{{ g.name }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+          {% if 'LEVEL' in (d.grouping|string) %}
+            <form method="post" action="/admin/directions/{{ d.id }}/groups/bulk">
+              <label>Add groups (comma separated) <input type="text" name="groups"></label>
+              <button type="submit">Add</button>
+            </form>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+
+    <h4>Add Direction</h4>
+    <form method="post" action="/admin/olympiads/{{ o.id }}/directions/new">
+      <label>Name <input type="text" name="name" required></label>
+      <label>Grouping
+        <select name="grouping">
+          <option value="CLASS">CLASS (1-11)</option>
+          <option value="LEVEL">LEVEL (custom groups)</option>
+        </select>
+      </label>
+      <label>Groups (for LEVEL, comma separated) <input type="text" name="groups"></label>
+      <button type="submit">Add</button>
+    </form>
+
+    <h3>Registrations</h3>
+    <p><a href="/admin/olympiads/{{ o.id }}/registrations/export">Export to Excel</a></p>
+    <table border="1" cellpadding="6" cellspacing="0">
+      <tr>
+        <th>ID</th><th>Ticket</th><th>Name</th><th>Lang</th><th>Region</th><th>District</th><th>School</th><th>Grade</th><th>Created</th>
+      </tr>
+      {% for r in regs %}
+        <tr>
+          <td>{{ r.id }}</td>
+          <td>{{ r.ticket_id }}</td>
+          <td>{{ r.full_name }}</td>
+          <td>{{ r.language }}</td>
+          <td>{{ r.region }}</td>
+          <td>{{ r.district }}</td>
+          <td>{{ r.school }}</td>
+          <td>{{ r.grade }}</td>
+          <td>{{ r.created_at }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+
+    <p><a href="/admin/olympiads">Back</a></p>
+  </body>
+</html>

@@ -1,0 +1,480 @@
+{
+  "nav": {
+    "about": "About BOND",
+    "schedule": "Olympiad Schedule",
+    "rating": "Rating",
+    "contact": "Contact",
+    "registration": "Registration",
+    "news": "News",
+    "admin": "Admin",
+    "login": "Login",
+    "register": "Sign up",
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "auth": {
+    "loginTitle": "Login",
+    "loginSubtitle": "Enter your phone and password.",
+    "registerTitle": "Sign up",
+    "registerSubtitle": "Create your BOND profile.",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "phone": "Phone number",
+    "password": "Password",
+    "passwordConfirm": "Confirm password",
+    "showPassword": "Show",
+    "hidePassword": "Hide",
+    "passwordMismatch": "Passwords do not match.",
+    "phoneExists": "An account with this phone already exists.",
+    "invalidCredentials": "Invalid phone or password.",
+    "submitLogin": "Login",
+    "submitRegister": "Sign up",
+    "haveAccount": "Already have an account?",
+    "noAccount": "Don't have an account?",
+    "loginLink": "Login",
+    "registerLink": "Sign up",
+    "error": "Something went wrong. Please try again."
+  },
+  "app": {
+    "appName": "BOND",
+    "greeting": "Hello",
+    "logout": "Log out",
+    "nav": {
+      "catalog": "Catalog",
+      "olympiads": "My Olympiads",
+      "results": "Results",
+      "notifications": "Notifications",
+      "profile": "Profile"
+    },
+    "catalogSearch": "Search catalog",
+    "bannerTitle": "News",
+    "categories": "Categories",
+    "category": {
+      "math": "Math",
+      "english": "English",
+      "it": "IT",
+      "mental": "Mental",
+      "camp": "Camp",
+      "travel": "Travel"
+    },
+    "olympiadList": "Olympiad schedule",
+    "region": "Region",
+    "minPrice": "Min price",
+    "maxPrice": "Max price",
+    "eventSubtitle": "Olympiad",
+    "free": "Free",
+    "registered": "Registered",
+    "paid": "Paid",
+    "cta": "Register",
+    "details": "Details",
+    "myOlympiadsTitle": "My Olympiads",
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "noRegistrations": "No registrations yet.",
+    "statusLabel": "Status",
+    "paymentLabel": "Payment",
+    "payment": {
+      "paid": "Paid",
+      "unpaid": "Unpaid",
+      "refunded": "Refunded"
+    },
+    "notificationsTitle": "Notifications",
+    "notificationsEmpty": "No notifications yet.",
+    "readLabel": "Read",
+    "newLabel": "New",
+    "notifications": {
+      "payment_confirmed": "Payment confirmed",
+      "event_reminder": "Event reminder",
+      "venue_update": "Venue updated",
+      "registration_confirmed": "Registration confirmed"
+    },
+    "profileTitle": "My profile",
+    "profileSubtitle": "Profile and main settings.",
+    "profilePhone": "Phone",
+    "profileName": "Name",
+    "profileLanguage": "Language",
+    "resultsTitle": "Results",
+    "resultsComing": "Results coming soon."
+  },
+  "profile": {
+    "title": "My profile",
+    "subtitle": "Personal details and registrations.",
+    "personal": "Profile details",
+    "fullName": "Full name",
+    "phone": "Phone",
+    "registrations": "My olympiads",
+    "empty": "No registrations yet."
+  },
+  "promo": {
+    "eyebrow": "Upcoming",
+    "title": "Olympiad Announcements",
+    "note": "Fresh updates from the BOND team.",
+    "fallback": "Registrations are now open for the new season.",
+    "cta": "Register Now",
+    "details": "Details",
+    "endsIn": "Registration ends in",
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "tbd": "Dates will be announced"
+  },
+  "rating": {
+    "title": "Live Rating",
+    "subtitle": "Top participants this season",
+    "note": "Rankings update as new results and registrations are confirmed.",
+    "live": "Live rating",
+    "points": "pts",
+    "top": "Top score",
+    "topLabel": "Best performance so far",
+    "total": "Total participants",
+    "totalLabel": "Active this season",
+    "updated": "Updated",
+    "updatedValue": "Today",
+    "updatedLabel": "Last sync"
+  },
+  "hero": {
+    "badge": "International Standard",
+    "title": "BOND International Olympiad",
+    "subtitle": "A trusted platform for ambitious students to compete, grow, and earn recognition.",
+    "cta": {
+      "schedule": "View Schedule",
+      "register": "Register Now"
+    },
+    "meta": {
+      "trusted": "Independent and transparent system",
+      "transparent": "Clear evaluation process"
+    },
+    "focus": {
+      "title": "Focus",
+      "value": "English, Mathematics, IT & Coding, Mental Arithmetic"
+    },
+    "awards": {
+      "title": "Awards",
+      "value": "Diplomas, medals, certificates"
+    }
+  },
+  "about": {
+    "title": "Our Philosophy",
+    "quote": "Build a bold mind. Earn a bright future.",
+    "body1": "BOND International Olympiad helps students build academic confidence through meaningful competition.",
+    "body2": "We focus on clarity, fairness, and measurable progress across key subjects.",
+    "highlight": "Every participant receives guidance, feedback, and a path to improve."
+  },
+  "aboutSide": {
+    "card1Title": "Inspiring Growth",
+    "card1Text": "BOND connects students through knowledge, thinking, and ambition.",
+    "card2Label": "BOND Standard",
+    "card2Title": "Fair Evaluation",
+    "card2Text": "Transparent criteria and equal opportunities for every participant.",
+    "officialTitle": "Olympiad Names",
+    "serviceLabel": "Additional Service",
+    "serviceValue": "BOND Camp"
+  },
+  "acronym": {
+    "title": "What BOND Stands For",
+    "summary": "BOND connects students to ambition, structure, and opportunity.",
+    "b": {
+      "word": "Believe",
+      "translation": "Confidence",
+      "desc": "Confidence to solve hard problems."
+    },
+    "o": {
+      "word": "Open",
+      "translation": "Opportunity",
+      "desc": "Open doors through merit."
+    },
+    "n": {
+      "word": "Network",
+      "translation": "Connection",
+      "desc": "Supportive growth at every step."
+    },
+    "d": {
+      "word": "Develop",
+      "translation": "Growth",
+      "desc": "Habits that build results."
+    }
+  },
+  "subjects": {
+    "title": "Core Olympiad Subjects",
+    "english": {
+      "title": "English",
+      "tagline": "Language Skills",
+      "items": "Reading accuracy, Listening comprehension, Writing clarity, Grammar mastery"
+    },
+    "math": {
+      "title": "Mathematics",
+      "tagline": "Logic & Numbers",
+      "items": "Algebraic thinking, Problem solving, Geometry basics, Olympiad methods"
+    },
+    "it": {
+      "title": "IT & Coding",
+      "tagline": "Digital Skills",
+      "items": "Algorithmic mindset, Coding basics, Real-world logic, Computational thinking"
+    },
+    "mental": {
+      "title": "Mental Arithmetic",
+      "tagline": "Speed & Focus",
+      "items": "Concentration training, Rapid calculation, Accuracy drills, Confidence building"
+    }
+  },
+  "participants": {
+    "title": "Participants",
+    "note": "Grouped to ensure fair competition and focused evaluation."
+  },
+  "format": {
+    "title": "Format",
+    "online": "Online",
+    "offline": "Offline",
+    "staged": "Multi-stage",
+    "note": "Formats may vary by subject and region."
+  },
+  "scoring": {
+    "title": "Scoring",
+    "item1": "Transparent criteria",
+    "item2": "Independent evaluators",
+    "item3": "Objective ranking",
+    "note": "Official certificates are issued for every participant."
+  },
+  "awards": {
+    "title": "Awards",
+    "item1": "International-level certificates",
+    "item2": "Medals for top performers",
+    "item3": "Recognition for schools and parents"
+  },
+  "why": {
+    "title": "Why BOND",
+    "item1": "Trusted evaluation system",
+    "item2": "Professional academic support",
+    "item3": "Clear preparation roadmap",
+    "item4": "Motivation through competition",
+    "item5": "Global mindset growth"
+  },
+  "schedule": {
+    "title": "Olympiad Schedule",
+    "note": "More dates will be announced soon.",
+    "header": {
+      "name": "Name",
+      "subject": "Subject",
+      "format": "Format",
+      "date": "Date",
+      "location": "Location",
+      "status": "Registration",
+      "action": "Action"
+    },
+    "status": {
+      "open": "Open",
+      "closed": "Closed",
+      "tbd": "TBD"
+    },
+    "filters": {
+      "subject": "Subject",
+      "grade": "Grade Group",
+      "format": "Format",
+      "all": "All"
+    },
+    "cta": "Register",
+    "details": "Details"
+  },
+  "registration": {
+    "title": "Registration",
+    "step1": "Choose the subject and level that fits the student.",
+    "step2": "Submit the online application form.",
+    "step3": "Wait for confirmation from the BOND team.",
+    "step4": "Prepare and participate on the announced date.",
+    "success": "Submitted (demo). We will contact you.",
+    "error": "Please fill in the required fields.",
+    "summary": {
+      "title": "Selected Olympiad"
+    },
+    "details": {
+      "title": "About the olympiad",
+      "subtitle": "Full details",
+      "info": "Information",
+      "description": "Description",
+      "rules": "Rules",
+      "prizes": "Prizes",
+      "date": "Date",
+      "location": "Location",
+      "price": "Price",
+      "type": "Type",
+      "subject": "Subject",
+      "format": "Format",
+      "capacity": "Capacity",
+      "register": "Register"
+    },
+    "form": {
+      "olympiad": "Olympiad (optional)",
+      "select": "Select",
+      "name": "Full Name",
+      "grade": "Grade",
+      "subject": "Subject",
+      "format": "Format Preference",
+      "phone": "Phone",
+      "telegram": "Telegram (optional)",
+      "email": "Email (optional)",
+      "consent": "I have reviewed the {event} details and agree to proceed with payment.",
+      "consentFallback": "event",
+      "submit": "Submit"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "telegram": "Telegram",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "instagram": "Instagram",
+    "telegramChannel": "Telegram Channel",
+    "telegramAdmin": "Telegram Admin"
+  },
+  "articles": {
+    "title": "News & Updates",
+    "empty": "News updates will appear here soon.",
+    "viewAll": "View All"
+  },
+  "official": {
+    "title": "Official Information",
+    "subtitle": "Official details about BOND International Olympiad.",
+    "fullNameLabel": "Full Name",
+    "fullNameValue": "BOND International Olympiad",
+    "shortNameLabel": "Short Name",
+    "shortNameValue": "BOND Cup / BOND Challenge",
+    "domainLabel": "Official Domain",
+    "domainValue": "bondolympiad.uz",
+    "cta": "News & Updates"
+  },
+  "footer": {
+    "name": "BOND International Olympiad",
+    "short": "International-standard academic competition.",
+    "domain": "bondolympiad.uz"
+  },
+  "enum": {
+    "subject": {
+      "ENGLISH": "English",
+      "MATH": "Mathematics",
+      "IT": "IT & Coding",
+      "MENTAL": "Mental Arithmetic"
+    },
+    "grade": {
+      "G1_4": "Grades 1-4",
+      "G5_7": "Grades 5-7",
+      "G8_9": "Grades 8-9",
+      "G10_11": "Grades 10-11"
+    },
+    "format": {
+      "ONLINE": "Online",
+      "OFFLINE": "Offline",
+      "STAGED": "Multi-stage"
+    },
+    "eventType": {
+      "OLYMPIAD": "Olympiad",
+      "CONTEST": "Contest",
+      "CAMP": "Camp",
+      "TRAVEL": "Education travel"
+    },
+    "registrationStatus": {
+      "NEW": "New",
+      "CONTACTED": "Contacted",
+      "PAID": "Paid",
+      "CONFIRMED": "Confirmed",
+      "ATTENDED": "Attended",
+      "REJECTED": "Rejected",
+      "CANCELLED": "Cancelled",
+      "REGISTERED": "Registered",
+      "RESULTS_READY": "Results ready"
+    }
+  },
+  "admin": {
+    "title": "Admin Panel v2",
+    "nav": {
+      "dashboard": "Dashboard",
+      "events": "Events",
+      "registrations": "Registrations",
+      "organizations": "Organizations",
+    "finance": "Finance",
+    "content": "Content",
+    "settings": "Settings",
+    "access": "Access Control",
+    "audit": "Audit Logs",
+    "olympiads": "Olympiads",
+    "users": "Users",
+    "notifications": "Notifications"
+    },
+    "actions": {
+      "create": "Create",
+      "save": "Save",
+      "update": "Update",
+      "cancel": "Cancel",
+      "remove": "Remove",
+      "filter": "Filter",
+      "search": "Search",
+      "export": "Export CSV",
+      "approve": "Approve",
+      "reject": "Reject",
+      "refund": "Refund",
+      "publish": "Publish",
+      "archive": "Archive",
+      "duplicate": "Duplicate"
+    },
+    "eventForm": {
+      "type": "Type",
+      "status": "Status",
+      "subjects": "Subjects",
+      "city": "City/Address",
+      "startDate": "Start date",
+      "endDate": "End date",
+      "price": "Price",
+      "currency": "Currency",
+      "capacity": "Capacity",
+      "coverImage": "Cover image",
+      "title": "Title",
+      "subtitle": "Subtitle",
+      "description": "Description",
+      "rules": "Rules",
+      "seoTitle": "SEO title",
+      "seoDescription": "SEO description"
+    },
+    "status": {
+      "draft": "Draft",
+      "pending": "Pending",
+      "published": "Published",
+      "archived": "Archived",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "new": "New",
+      "contacted": "Contacted",
+      "attended": "Attended",
+      "cancelled": "Cancelled",
+      "unpaid": "Unpaid",
+      "paid": "Paid",
+      "refunded": "Refunded",
+      "failed": "Failed",
+      "registered": "Registered",
+      "results_ready": "Results ready"
+    }
+  },
+  "organizer": {
+    "title": "Organizer Cabinet",
+    "nav": {
+      "dashboard": "Dashboard",
+      "olympiads": "Olympiads",
+      "registrations": "Registrations",
+      "profile": "Profile"
+    },
+    "actions": {
+      "signIn": "Sign in",
+      "logout": "Logout"
+    },
+    "fields": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "errors": {
+      "invalidCredentials": "Invalid credentials"
+    },
+    "unauthorized": {
+      "title": "Access denied",
+      "subtitle": "You do not have access to this section."
+    }
+  }
+}

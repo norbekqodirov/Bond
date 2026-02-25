@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: bond_admin_v2_db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: bond_admin_v2
+    volumes:
+      - bond_admin_v2_data:/var/lib/postgresql/data
+  redis:
+    image: redis:7-alpine
+    container_name: bond_admin_v2_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - bond_admin_v2_redis:/data
+
+volumes:
+  bond_admin_v2_data:
+  bond_admin_v2_redis:

@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>New Olympiad</title>
+  </head>
+  <body>
+    <h2>New Olympiad</h2>
+    <form method="post" enctype="multipart/form-data">
+      <label>Name <input type="text" name="name" required></label><br/>
+      <label>Description <br/><textarea name="description" rows="5" cols="60"></textarea></label><br/>
+      <label>Event at (YYYY-MM-DDTHH:MM) <input type="text" name="event_at" placeholder="2025-01-31T10:00" required></label><br/>
+      <label>Address <input type="text" name="address" required></label><br/>
+      <label>Contact phone <input type="text" name="contact_phone" placeholder="(Optional)"></label><br/>
+      <label>Participation fee (so'm) <input type="number" name="fee" value="0" min="0"></label><br/>
+      <fieldset>
+        <legend>Languages</legend>
+        <label><input type="checkbox" name="lang_uz" value="true" checked> UZ</label>
+        <label><input type="checkbox" name="lang_ru" value="true"> RU</label>
+        <label><input type="checkbox" name="lang_en" value="true"> EN</label>
+      </fieldset>
+      <label>Poster <input type="file" name="poster"></label><br/>
+      <label>PDF <input type="file" name="pdf"></label><br/>
+      <button type="submit">Create</button>
+    </form>
+    <p><a href="/admin/olympiads">Back</a></p>
+  </body>
+</html>

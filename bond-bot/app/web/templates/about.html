@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>About</title>
+  </head>
+  <body>
+    <h2>About Page</h2>
+    <form method="post">
+      <h3>UZ</h3>
+      <textarea name="content_uz" rows="6" cols="80">{{ a.content_uz }}</textarea>
+      <h3>RU</h3>
+      <textarea name="content_ru" rows="6" cols="80">{{ a.content_ru }}</textarea>
+      <h3>EN</h3>
+      <textarea name="content_en" rows="6" cols="80">{{ a.content_en }}</textarea>
+      <div>
+        <button type="submit">Save</button>
+      </div>
+    </form>
+    <p><a href="/admin">Back</a></p>
+  </body>
+</html>
+

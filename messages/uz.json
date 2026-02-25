@@ -1,0 +1,479 @@
+{
+  "nav": {
+    "about": "BOND haqida",
+    "schedule": "Olimpiadalar jadvali",
+    "rating": "Reyting",
+    "contact": "Aloqa",
+    "registration": "Ro'yxatdan o'tish",
+    "news": "Yangiliklar",
+    "admin": "Admin",
+    "login": "Kirish",
+    "register": "Ro'yxatdan o'tish",
+    "profile": "Profil",
+    "logout": "Chiqish"
+  },
+  "auth": {
+    "loginTitle": "Kirish",
+    "loginSubtitle": "Telefon raqamingiz va parolingizni kiriting.",
+    "registerTitle": "Ro'yxatdan o'tish",
+    "registerSubtitle": "Profil yaratish uchun ma'lumotlarni to'ldiring.",
+    "firstName": "Ism",
+    "lastName": "Familya",
+    "phone": "Telefon raqam",
+    "password": "Parol",
+    "passwordConfirm": "Parolni qayta kiriting",
+    "showPassword": "Ko'rsatish",
+    "hidePassword": "Yashirish",
+    "passwordMismatch": "Parollar mos emas.",
+    "phoneExists": "Bu telefon raqam bilan profil mavjud.",
+    "invalidCredentials": "Telefon raqam yoki parol noto'g'ri.",
+    "submitLogin": "Kirish",
+    "submitRegister": "Ro'yxatdan o'tish",
+    "haveAccount": "Profilingiz bormi?",
+    "noAccount": "Profilingiz yo'qmi?",
+    "loginLink": "Kirish",
+    "registerLink": "Ro'yxatdan o'tish",
+    "error": "Xatolik yuz berdi. Qayta urinib ko'ring."
+  },
+  "app": {
+    "appName": "BOND",
+    "greeting": "Salom",
+    "logout": "Chiqish",
+    "nav": {
+      "catalog": "Katalog",
+      "olympiads": "Mening olimpiadalarim",
+      "results": "Natijalar",
+      "notifications": "Bildirishnomalar",
+      "profile": "Profil"
+    },
+    "catalogSearch": "Katalog",
+    "bannerTitle": "Yangiliklar",
+    "categories": "Kategoriyalar",
+    "category": {
+      "math": "Matematika",
+      "english": "Ingliz tili",
+      "it": "IT",
+      "mental": "Mental",
+      "camp": "Camp",
+      "travel": "Sayohat"
+    },
+    "olympiadList": "Olimpiadalar jadvali",
+    "region": "Hudud",
+    "minPrice": "Min narx",
+    "maxPrice": "Max narx",
+    "eventSubtitle": "Olimpiada",
+    "free": "Bepul",
+    "registered": "Ro'yxatdan o'tgan",
+    "paid": "To'langan",
+    "cta": "Ro'yxatdan o'tish",
+    "myOlympiadsTitle": "Mening olimpiadalarim",
+    "upcoming": "Keladigan",
+    "past": "O'tgan",
+    "noRegistrations": "Hozircha ro'yxatdan o'tmagan.",
+    "statusLabel": "Holat",
+    "paymentLabel": "To'lov",
+    "payment": {
+      "paid": "To'langan",
+      "unpaid": "To'lanmagan",
+      "refunded": "Qaytarilgan"
+    },
+    "notificationsTitle": "Bildirishnomalar",
+    "notificationsEmpty": "Bildirishnomalar hozircha yo'q.",
+    "readLabel": "O'qilgan",
+    "newLabel": "Yangi",
+    "notifications": {
+      "payment_confirmed": "To'lov tasdiqlandi",
+      "event_reminder": "Eslatma",
+      "venue_update": "Joylashuv yangilandi",
+      "registration_confirmed": "Ro'yxatdan o'tish tasdiqlandi"
+    },
+    "profileTitle": "Mening profilim",
+    "profileSubtitle": "Profil va asosiy sozlamalar.",
+    "profilePhone": "Telefon",
+    "profileName": "Ism",
+    "profileLanguage": "Til",
+    "resultsTitle": "Natijalar",
+    "resultsComing": "Natijalar tez orada."
+  },
+  "profile": {
+    "title": "Mening profilim",
+    "subtitle": "Shaxsiy ma'lumotlar va ro'yxatlar.",
+    "personal": "Ma'lumotlar",
+    "fullName": "F.I.Sh.",
+    "phone": "Telefon",
+    "registrations": "Mening olimpiadalarim",
+    "empty": "Hozircha ro'yxatlar yo'q."
+  },
+  "promo": {
+    "eyebrow": "Kutilayotgan",
+    "title": "Olimpiadalar e'loni",
+    "note": "BOND jamoasidan yangi yangiliklar.",
+    "fallback": "Yangi mavsumga ro'yxat ochiq.",
+    "cta": "Ro'yxatdan o'tish",
+    "details": "Batafsil",
+    "endsIn": "Ro'yxat tugashiga",
+    "days": "Kun",
+    "hours": "Soat",
+    "minutes": "Daqiqa",
+    "tbd": "Sanalar tez orada e'lon qilinadi"
+  },
+  "rating": {
+    "title": "Jonli reyting",
+    "subtitle": "Mavsumdagi eng faol qatnashuvchilar",
+    "note": "Reytinglar natijalar va ro'yxatlar tasdiqlanganda yangilanadi.",
+    "live": "Jonli reyting",
+    "points": "ball",
+    "top": "Eng yuqori ball",
+    "topLabel": "Eng yaxshi natija",
+    "total": "Jami ishtirokchi",
+    "totalLabel": "Ushbu mavsum",
+    "updated": "Yangilangan",
+    "updatedValue": "Bugun",
+    "updatedLabel": "So'nggi yangilanish"
+  },
+  "hero": {
+    "badge": "International Standard",
+    "title": "BOND International Olympiad - bilim, fikrlash va rivojlanish maydoni",
+    "subtitle": "BOND International Olympiad - bu ingliz tili, matematika, axborot texnologiyalari va mental arifmetika yo'nalishlari bo'yicha o'quvchilarning bilimini aniqlash, rivojlantirish va rag'batlantirishga qaratilgan mustaqil olimpiadadir.",
+    "cta": {
+      "schedule": "Olimpiadalar jadvali",
+      "register": "Ro'yxatdan o'tish"
+    },
+    "meta": {
+      "trusted": "Mustaqil va shaffof tizim",
+      "transparent": "Baholash jarayoni ochiq"
+    },
+    "focus": {
+      "title": "Yo'nalishlar",
+      "value": "English, Mathematics, IT & Coding, Mental Arithmetic"
+    },
+    "awards": {
+      "title": "Mukofotlar",
+      "value": "Diplomlar, medallar, sertifikatlar"
+    }
+  },
+  "about": {
+    "title": "BOND nima?",
+    "quote": "BOND - bu raqobat emas, rishta.",
+    "body1": "Bu olimpiada o'quvchilarni fan orqali, tafakkur orqali va orzular orqali bog'laydi.",
+    "body2": "BOND'da g'olib - eng ko'p ball olgan emas, eng ko'p o'rgangan va rivojlangan ishtirokchidir.",
+    "highlight": "Bizning asosiy maqsadimiz - o'quvchilarda bilimga qiziqish uyg'otish, mantiqiy fikrlashni rivojlantirish va sog'lom raqobat muhitini yaratish."
+  },
+  "aboutSide": {
+    "card1Title": "Bilimga ilhom",
+    "card1Text": "BOND o'quvchini fan, tafakkur va orzular orqali rivojlantiradi.",
+    "card2Label": "BOND yondashuvi",
+    "card2Title": "Adolatli baholash",
+    "card2Text": "Shaffof mezonlar va teng imkoniyat tamoyillariga amal qilamiz.",
+    "officialTitle": "Olimpiada nomlari",
+    "serviceLabel": "Qo'shimcha xizmat",
+    "serviceValue": "BOND Camp"
+  },
+  "acronym": {
+    "title": "BOND nomining ma'nosi",
+    "summary": "BOND - bu ishonch, ochiqlik, aloqa va rivojlanish konsepsiyasi.",
+    "b": {
+      "word": "Believe",
+      "translation": "Ishonch",
+      "desc": "O'quvchi o'z bilimiga ishonadi."
+    },
+    "o": {
+      "word": "Open",
+      "translation": "Ochiqlik",
+      "desc": "Har kim uchun ochiq imkoniyat."
+    },
+    "n": {
+      "word": "Network",
+      "translation": "Aloqa",
+      "desc": "Yangi do'stlar va fikrlar."
+    },
+    "d": {
+      "word": "Develop",
+      "translation": "Rivojlanish",
+      "desc": "Bilim orqali o'sish."
+    }
+  },
+  "subjects": {
+    "title": "Olimpiada yo'nalishlari",
+    "english": {
+      "title": "Ingliz tili",
+      "tagline": "Til ko'nikmalari",
+      "items": "Grammatika, Lug'at boyligi, Matnni tushunish, Til kompetensiyalari"
+    },
+    "math": {
+      "title": "Mathematics",
+      "tagline": "Mantiq va raqamlar",
+      "items": "Mantiqiy masalalar, Hisob-kitob, Tahliliy fikrlash, Yechim strategiyalari"
+    },
+    "it": {
+      "title": "IT va kodlash",
+      "tagline": "Raqamli ko'nikmalar",
+      "items": "Algoritmik fikrlash, Kodlash asoslari, Amaliy mantiq, Kompyuter tafakkuri"
+    },
+    "mental": {
+      "title": "Mental arifmetika",
+      "tagline": "Tezlik va diqqat",
+      "items": "Diqqatni jamlash, Tezkor hisoblash, Aniqlik mashqlari, Ishonchni oshirish"
+    }
+  },
+  "participants": {
+    "title": "Ishtirokchilar",
+    "note": "Har bir yosh va sinf guruhi uchun topshiriqlar alohida darajada ishlab chiqiladi."
+  },
+  "format": {
+    "title": "O'tkazilish formati",
+    "online": "Onlayn format",
+    "offline": "Oflayn (markazlashtirilgan) format",
+    "staged": "Bosqichli olimpiadalar (saralash va final)",
+    "note": "Olimpiada sanalari va joylari oldindan rasmiy e'lon qilinadi."
+  },
+  "scoring": {
+    "title": "Baholash tizimi",
+    "item1": "Test va topshiriqlar aniq mezonlar asosida baholanadi",
+    "item2": "Natijalar shaffof e'lon qilinadi",
+    "item3": "Har bir ishtirokchi o'z natijasini ko'rish imkoniga ega",
+    "note": "Baholashda adolat, xolislik va teng imkoniyatlar asosiy tamoyil."
+  },
+  "awards": {
+    "title": "Mukofotlar va sertifikatlar",
+    "item1": "1-, 2-, 3-o'rin sovrindorlari diplom va esdalik sovrinlari bilan taqdirlanadi",
+    "item2": "Barcha ishtirokchilarga BOND ishtirok sertifikati beriladi",
+    "item3": "Eng yaxshi natija ko'rsatgan o'quvchilar keyingi bosqichlar va maxsus dasturlarga tavsiya etiladi"
+  },
+  "why": {
+    "title": "Nega aynan BOND?",
+    "item1": "Mustaqil va shaffof tizim",
+    "item2": "Fan mutaxassislari tomonidan ishlab chiqilgan topshiriqlar",
+    "item3": "Yoshga mos va adolatli baholash",
+    "item4": "Respublika miqyosida o'tkazilish",
+    "item5": "Ota-ona va o'quvchi uchun tushunarli jarayon"
+  },
+  "schedule": {
+    "title": "Olimpiadalar jadvali",
+    "note": "Olimpiada sanalari va joylari oldindan rasmiy e'lon qilinadi.",
+    "header": {
+      "name": "Nomi",
+      "subject": "Fan",
+      "format": "Format",
+      "date": "Sana",
+      "location": "Manzil",
+      "status": "Ro'yxat",
+      "action": "Amal"
+    },
+    "status": {
+      "open": "Ochiq",
+      "closed": "Yopiq",
+      "tbd": "TBD"
+    },
+    "filters": {
+      "subject": "Fan",
+      "grade": "Sinf guruhi",
+      "format": "Format",
+      "all": "Barchasi"
+    },
+    "cta": "Ro'yxatdan o'tish",
+    "details": "Batafsil"
+  },
+  "registration": {
+    "title": "Ro'yxatdan o'tish",
+    "step1": "Olimpiadalar jadvali bilan tanishing",
+    "step2": "Ro'yxatdan o'tish formasini to'ldiring",
+    "step3": "Ishtirok badalini to'lang",
+    "step4": "Belgilangan kunda olimpiadada qatnashing",
+    "success": "Yuborildi (demo). Siz bilan bog'lanamiz.",
+    "error": "Iltimos, majburiy maydonlarni to'ldiring.",
+    "summary": {
+      "title": "Tanlangan olimpiada"
+    },
+    "details": {
+      "title": "Olimpiada haqida",
+      "subtitle": "To'liq ma'lumot",
+      "info": "Ma'lumotlar",
+      "description": "Tavsif",
+      "rules": "Qoidalar",
+      "prizes": "Mukofotlar",
+      "date": "Sana",
+      "location": "Manzil",
+      "price": "Narx",
+      "type": "Turi",
+      "subject": "Fan",
+      "format": "Format",
+      "capacity": "Sig'im",
+      "register": "Ro'yxatdan o'tish"
+    },
+    "form": {
+      "olympiad": "Olimpiada (ixtiyoriy)",
+      "select": "Tanlang",
+      "name": "F.I.Sh.",
+      "grade": "Sinf",
+      "subject": "Fan",
+      "format": "Format tanlovi",
+      "phone": "Telefon raqam",
+      "telegram": "Telegram (ixtiyoriy)",
+      "email": "Email (ixtiyoriy)",
+      "consent": "{event} ma'lumotlari bilan tanishib chiqdim va to'lov to'lashga roziman.",
+      "consentFallback": "Tadbir",
+      "submit": "Yuborish"
+    }
+  },
+  "contact": {
+    "title": "Biz bilan bog'laning",
+    "telegram": "Telegram",
+    "phone": "Telefon",
+    "email": "Email",
+    "address": "Manzil",
+    "instagram": "Instagram",
+    "telegramChannel": "Telegram kanal",
+    "telegramAdmin": "Telegram admin"
+  },
+  "articles": {
+    "title": "Yangiliklar",
+    "empty": "Yangi ma'lumotlar tez orada joylanadi.",
+    "viewAll": "Barcha yangiliklar"
+  },
+  "official": {
+    "title": "Rasmiy ma'lumot",
+    "subtitle": "BOND International Olympiad haqida rasmiy ma'lumotlar.",
+    "fullNameLabel": "To'liq nom",
+    "fullNameValue": "BOND International Olympiad",
+    "shortNameLabel": "Qisqa nom",
+    "shortNameValue": "BOND Cup / BOND Challenge",
+    "domainLabel": "Rasmiy domen",
+    "domainValue": "bondolympiad.uz",
+    "cta": "Yangi ma'lumotlar"
+  },
+  "footer": {
+    "name": "BOND International Olympiad",
+    "short": "Xalqaro standartdagi akademik musobaqa.",
+    "domain": "bondolympiad.uz"
+  },
+  "enum": {
+    "subject": {
+      "ENGLISH": "Ingliz tili",
+      "MATH": "Matematika",
+      "IT": "IT va kodlash",
+      "MENTAL": "Mental arifmetika"
+    },
+    "grade": {
+      "G1_4": "1-4 sinflar",
+      "G5_7": "5-7 sinflar",
+      "G8_9": "8-9 sinflar",
+      "G10_11": "10-11 sinflar"
+    },
+    "format": {
+      "ONLINE": "Onlayn",
+      "OFFLINE": "Oflayn",
+      "STAGED": "Bosqichma-bosqich"
+    },
+    "eventType": {
+      "OLYMPIAD": "Olimpiada",
+      "CONTEST": "Tanlov",
+      "CAMP": "Lager",
+      "TRAVEL": "Ta'lim sayohati"
+    },
+    "registrationStatus": {
+      "NEW": "Yangi",
+      "REGISTERED": "Ro'yxatdan o'tdi",
+      "CONTACTED": "Bog'lanildi",
+      "PAID": "To'langan",
+      "CONFIRMED": "Tasdiqlangan",
+      "RESULTS_READY": "Natijalar tayyor",
+      "ATTENDED": "Ishtirok etdi",
+      "REJECTED": "Rad etildi",
+      "CANCELLED": "Bekor qilindi"
+    }
+  },
+  "admin": {
+    "title": "Admin Panel v2",
+    "nav": {
+      "dashboard": "Boshqaruv",
+      "events": "Tadbirlar",
+      "registrations": "Ro'yxatlar",
+      "organizations": "Tashkilotlar",
+      "finance": "Moliya",
+      "content": "Kontent",
+      "settings": "Sozlamalar",
+      "access": "Kirish huquqi",
+      "audit": "Audit jurnali",
+      "olympiads": "Olimpiadalar",
+      "users": "Foydalanuvchilar",
+      "notifications": "Bildirishnomalar"
+    },
+    "actions": {
+      "create": "Yaratish",
+      "save": "Saqlash",
+      "update": "Yangilash",
+      "cancel": "Bekor qilish",
+      "remove": "O'chirish",
+      "filter": "Filtr",
+      "search": "Qidirish",
+      "export": "CSV eksport",
+      "approve": "Tasdiqlash",
+      "reject": "Rad etish",
+      "refund": "Qaytarish",
+      "publish": "Nashr etish",
+      "archive": "Arxivlash",
+      "duplicate": "Nusxa olish"
+    },
+    "eventForm": {
+      "type": "Turi",
+      "status": "Status",
+      "subjects": "Fanlar",
+      "city": "Shahar/Manzil",
+      "startDate": "Boshlanish sanasi",
+      "endDate": "Tugash sanasi",
+      "price": "Narx",
+      "currency": "Valyuta",
+      "capacity": "Sig'im",
+      "coverImage": "Muqova rasmi",
+      "title": "Sarlavha",
+      "subtitle": "Qisqa matn",
+      "description": "Tavsif",
+      "rules": "Qoidalar",
+      "seoTitle": "SEO sarlavha",
+      "seoDescription": "SEO tavsif"
+    },
+    "status": {
+      "draft": "Qoralama",
+      "pending": "Kutilmoqda",
+      "published": "Nashr qilingan",
+      "archived": "Arxiv",
+      "approved": "Tasdiqlangan",
+      "rejected": "Rad etilgan",
+      "new": "Yangi",
+      "contacted": "Bog'lanildi",
+      "registered": "Ro'yxatdan o'tdi",
+      "attended": "Qatnashdi",
+      "cancelled": "Bekor qilingan",
+      "unpaid": "To'lanmagan",
+      "paid": "To'langan",
+      "results_ready": "Natijalar tayyor",
+      "refunded": "Qaytarilgan",
+      "failed": "Xatolik"
+    }
+  },
+  "organizer": {
+    "title": "Organizer kabineti",
+    "nav": {
+      "dashboard": "Bosh sahifa",
+      "olympiads": "Olimpiadalar",
+      "registrations": "Ro'yxatlar",
+      "profile": "Profil"
+    },
+    "actions": {
+      "signIn": "Kirish",
+      "logout": "Chiqish"
+    },
+    "fields": {
+      "email": "Email",
+      "password": "Parol"
+    },
+    "errors": {
+      "invalidCredentials": "Login yoki parol noto'g'ri"
+    },
+    "unauthorized": {
+      "title": "Ruxsat yo'q",
+      "subtitle": "Ushbu bo'limga kirish huquqi yo'q."
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Olympiads</title>
+  </head>
+  <body>
+    <h2>Olympiads</h2>
+    <p><a href="/admin/olympiads/new">+ New Olympiad</a></p>
+    <table border="1" cellpadding="6" cellspacing="0">
+      <tr><th>ID</th><th>Name</th><th>Date</th><th>Active</th><th>Actions</th></tr>
+      {% for o in items %}
+      <tr>
+        <td>{{ o.id }}</td>
+        <td><a href="/admin/olympiads/{{ o.id }}">{{ o.name }}</a></td>
+        <td>{{ o.event_at }}</td>
+        <td>{{ 'Yes' if o.is_active else 'No' }}</td>
+        <td>
+          <form method="post" action="/admin/olympiads/{{ o.id }}/toggle" style="display:inline;">
+            <button type="submit">{{ 'Deactivate' if o.is_active else 'Activate' }}</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
+
