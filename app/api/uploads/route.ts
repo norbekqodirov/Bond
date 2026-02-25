@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 import { saveUploadedImage } from "@/lib/upload";
 import { getApiSession } from "@/lib/api-session";
 

@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 import { prisma } from "@/lib/prisma";
 import { getApiSession, requireApiSession } from "@/lib/api-session";
 import { eventUpdateSchema } from "@/lib/validators/event";

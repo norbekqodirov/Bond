@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 import { prisma } from "@/lib/prisma";
 import { eventTypeMap, gradeGroupMap, olympiadFormatMap, subjectMap, localeMap } from "@/lib/mappers";
 

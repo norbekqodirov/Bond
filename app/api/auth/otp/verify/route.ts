@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
+export const dynamic = "force-dynamic";
+
 import { prisma } from "@/lib/prisma";
 import { hashOtpCode, verifyOtpCode } from "@/lib/otp";
 import { generateTokenPair } from "@/lib/auth/refresh";

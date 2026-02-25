@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 import { prisma } from "@/lib/prisma";
 import { signAccessToken, tokenConfig } from "@/lib/auth/tokens";
 import { generateTokenPair, hashToken } from "@/lib/auth/refresh";

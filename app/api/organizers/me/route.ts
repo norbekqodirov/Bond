@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 import { requireApiSession } from "@/lib/api-session";
 import { getOrganizerForUser } from "@/lib/organizer";
 

@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import crypto from "crypto";
 
+export const dynamic = "force-dynamic";
+
 import { prisma } from "@/lib/prisma";
 import { requireApiSession } from "@/lib/api-session";
 import { logAudit } from "@/lib/audit";
