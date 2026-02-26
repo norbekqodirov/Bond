@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { isDatabaseConfigured } from "@/lib/database";
 
 export type Locale = "uz" | "ru" | "en";
 
@@ -108,6 +109,10 @@ export const defaultSettings: {
 };
 
 export async function getSiteSettings() {
+  if (!isDatabaseConfigured()) {
+    return defaultSettings;
+  }
+
   const keys = ["about", "hero", "contact", "footer"];
   let records: Awaited<ReturnType<typeof prisma.siteSetting.findMany>> = [];
   try {

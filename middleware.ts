@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import createMiddleware from "next-intl/middleware";
 
 import { defaultLocale, locales } from "./i18n/routing";
+import { isDatabaseConfigured } from "./lib/database";
 
 const intlMiddleware = createMiddleware({
   locales,
@@ -11,6 +12,17 @@ const intlMiddleware = createMiddleware({
 
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const dbConfigured = isDatabaseConfigured();
+
+  if (pathname.startsWith("/api/")) {
+    if (!dbConfigured && pathname !== "/api/admin/login") {
+      return NextResponse.json(
+        { error: "Database is not configured", code: "DATABASE_NOT_CONFIGURED" },
+        { status: 503 }
+      );
+    }
+    return NextResponse.next();
+  }
 
   // Keep legacy admin routes untouched (they use their own auth/session flow).
   if (pathname === "/admin" || pathname.startsWith("/admin/")) {
@@ -27,5 +39,5 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/(uz|ru|en)/:path*", "/admin/:path*", "/organizer/:path*"]
+  matcher: ["/", "/(uz|ru|en)/:path*", "/admin/:path*", "/organizer/:path*", "/api/:path*"]
 };
