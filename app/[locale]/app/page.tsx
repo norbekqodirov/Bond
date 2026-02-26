@@ -1,5 +1,6 @@
 import { getServerSession } from "@/lib/auth/server";
 import { prisma } from "@/lib/prisma";
+import { isDatabaseConfigured } from "@/lib/database";
 import { localizeField } from "@/lib/localize";
 import type { Locale } from "@/lib/settings";
 import { CatalogClient } from "@/components/user-app/CatalogClient";
@@ -11,6 +12,9 @@ export default async function AppHomePage({ params }: { params: { locale: Locale
   }
 
   const locale = params.locale;
+  if (!isDatabaseConfigured()) {
+    return <CatalogClient items={[]} articles={[]} registrationMap={{}} />;
+  }
 
   const [events, olympiads, articles, registrations] = await Promise.all([
     prisma.event.findMany({
