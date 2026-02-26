@@ -1,5 +1,5 @@
 import { AdminShell } from "@/components/admin-v2/AdminShell";
-import { DatabaseRequiredNotice } from "@/components/admin/DatabaseRequiredNotice";
+import { DatabaseRequiredNotice } from "@/components/shared/DatabaseRequiredNotice";
 import { isDatabaseConfigured } from "@/lib/database";
 import { requireUser } from "@/lib/auth/server";
 

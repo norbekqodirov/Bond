@@ -24,7 +24,10 @@ export function AdminShell({ user, permissions, children }: AdminShellProps) {
   const t = useTranslations("admin");
   const locale = useLocale();
 
-  const visibleNav = adminNav.filter((item) => permissions.includes(item.permission));
+  const hasWildcard = permissions.includes("*");
+  const visibleNav = adminNav.filter(
+    (item) => hasWildcard || permissions.includes(item.permission)
+  );
   const basePath = `/${locale}`;
 
   return (

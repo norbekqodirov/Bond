@@ -11,8 +11,7 @@
     "prisma:migrate": "prisma migrate dev",
     "prisma:studio": "prisma studio",
     "seed": "prisma db seed",
-    "test": "vitest run",
-    "telegram:setup": "node scripts/telegram-setup.mjs"
+    "test": "vitest run"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
