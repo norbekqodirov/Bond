@@ -1,8 +1,19 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
+import { isDatabaseConfigured } from "@/lib/database";
+import { DatabaseRequiredNotice } from "@/components/admin/DatabaseRequiredNotice";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default async function AdminDashboard() {
+  if (!isDatabaseConfigured()) {
+    return (
+      <div className="space-y-6">
+        <h1 className="text-3xl font-display font-semibold text-brand-primary">Dashboard</h1>
+        <DatabaseRequiredNotice />
+      </div>
+    );
+  }
+
   const [olympiads, registrations, articles, newRegistrations] =
     await Promise.all([
       prisma.olympiad.count(),

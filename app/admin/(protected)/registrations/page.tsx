@@ -1,9 +1,20 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
+import { isDatabaseConfigured } from "@/lib/database";
+import { DatabaseRequiredNotice } from "@/components/admin/DatabaseRequiredNotice";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 
 export default async function RegistrationsPage() {
+  if (!isDatabaseConfigured()) {
+    return (
+      <div className="space-y-6">
+        <h1 className="text-2xl font-display font-semibold text-brand-primary">Registrations</h1>
+        <DatabaseRequiredNotice />
+      </div>
+    );
+  }
+
   const registrations = await prisma.registration.findMany({
     orderBy: { createdAt: "desc" },
     include: { olympiad: true }

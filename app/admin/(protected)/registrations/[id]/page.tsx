@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
+import { isDatabaseConfigured } from "@/lib/database";
+import { DatabaseRequiredNotice } from "@/components/admin/DatabaseRequiredNotice";
 import { RegistrationDetailForm } from "@/components/admin/RegistrationDetailForm";
 
 export default async function RegistrationDetailPage({
@@ -7,6 +9,17 @@ export default async function RegistrationDetailPage({
 }: {
   params: { id: string };
 }) {
+  if (!isDatabaseConfigured()) {
+    return (
+      <div className="space-y-8">
+        <h1 className="text-2xl font-display font-semibold text-brand-primary">
+          Registration Detail
+        </h1>
+        <DatabaseRequiredNotice />
+      </div>
+    );
+  }
+
   const registration = await prisma.registration.findUnique({
     where: { id: params.id },
     include: { olympiad: true }

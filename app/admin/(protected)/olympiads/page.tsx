@@ -1,10 +1,21 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
+import { isDatabaseConfigured } from "@/lib/database";
 import { deleteOlympiad } from "@/app/admin/(protected)/olympiads/actions";
+import { DatabaseRequiredNotice } from "@/components/admin/DatabaseRequiredNotice";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 
 export default async function OlympiadsPage() {
+  if (!isDatabaseConfigured()) {
+    return (
+      <div className="space-y-6">
+        <h1 className="text-2xl font-display font-semibold text-brand-primary">Olympiads</h1>
+        <DatabaseRequiredNotice />
+      </div>
+    );
+  }
+
   const olympiads = await prisma.olympiad.findMany({
     orderBy: { createdAt: "desc" }
   });
