@@ -12,10 +12,9 @@ const intlMiddleware = createMiddleware({
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  if (pathname.startsWith("/admin")) {
-    const url = request.nextUrl.clone();
-    url.pathname = `/${defaultLocale}${pathname}`;
-    return NextResponse.redirect(url);
+  // Keep legacy admin routes untouched (they use their own auth/session flow).
+  if (pathname === "/admin" || pathname.startsWith("/admin/")) {
+    return NextResponse.next();
   }
 
   if (pathname.startsWith("/organizer")) {
