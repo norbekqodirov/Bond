@@ -1,6 +1,5 @@
 import "./globals.css";
 import { Poppins } from "next/font/google";
-import { getLocale } from "next-intl/server";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,15 +25,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  let locale = "uz";
-  try {
-    locale = await getLocale();
-  } catch {
-    locale = "uz";
-  }
-
   return (
-    <html lang={locale} className={`${poppins.variable} ${poppinsDisplay.variable}`}>
+    <html lang="uz" className={`${poppins.variable} ${poppinsDisplay.variable}`}>
       <body>{children}</body>
     </html>
   );
