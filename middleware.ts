@@ -13,9 +13,10 @@ const intlMiddleware = createMiddleware({
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const dbConfigured = isDatabaseConfigured();
+  const publicApiBypass = pathname === "/api/admin/login" || pathname === "/api/auth/logout";
 
   if (pathname.startsWith("/api/")) {
-    if (!dbConfigured && pathname !== "/api/admin/login") {
+    if (!dbConfigured && !publicApiBypass) {
       return NextResponse.json(
         { error: "Database is not configured", code: "DATABASE_NOT_CONFIGURED" },
         { status: 503 }
