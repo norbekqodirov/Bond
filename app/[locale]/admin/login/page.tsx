@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -13,6 +13,7 @@ export default function AdminLoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const locale = useLocale();
   const t = useTranslations("admin");
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -30,8 +31,7 @@ export default function AdminLoginPage() {
       return;
     }
 
-    // Route to the stable legacy admin panel after auth succeeds.
-    router.push("/admin");
+    router.push(`/${locale}/admin`);
   };
 
   return (

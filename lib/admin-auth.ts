@@ -14,6 +14,9 @@ type SessionPayload = {
 function getSecret() {
   const secret = process.env.ADMIN_SESSION_SECRET;
   if (!secret) {
+    if (process.env.NODE_ENV !== "production") {
+      return "bond-local-admin-session-secret";
+    }
     throw new Error("ADMIN_SESSION_SECRET is not set.");
   }
   return secret.trim();
