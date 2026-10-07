@@ -34,3 +34,10 @@ bond-bot/storage/*.db
 bond-bot/storage/*.xlsx
 bond-bot/storage/uploads/
 mobile/
+
+.vercel
+
+# Local credentials and sessions
+.vercel-global/
+.tmp-admin-login.json
+admin_cookie.txt
