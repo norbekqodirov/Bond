@@ -1,0 +1,14 @@
+{
+  "format": "AES-256-GCM + ZIP, split into 40 MiB chunks",
+  "project": "Bond",
+  "created": "2026-10-07",
+  "file_count": 62,
+  "archive_sha256": "19a9a7bd0b6a8259287b59f634592ce5478ef19b5ad919c3b1abf73bbad73204",
+  "parts": [
+    {
+      "file": "local-state.part001.enc",
+      "bytes": 5026147,
+      "sha256": "02bde2fbfad4a704ba589c0ccaf45b6db60ba56b51e984fc8a872f624ced38d5"
+    }
+  ]
+}
